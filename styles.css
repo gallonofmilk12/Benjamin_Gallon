@@ -5,19 +5,37 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
+    /* Default text color for light mode */
     background: #f4f4f4;
+    /* Default background for light mode */
     transition: background-color 0.3s, color 0.3s;
+}
+
+/* Particle Background */
+#particle-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Place behind all content */
+    pointer-events: none;
+    background: transparent;
 }
 
 /* Dark Mode */
 body.dark-mode {
     background-color: #121212;
+    /* Dark background */
     color: #ffffff;
+    /* White text for dark mode */
 }
 
 header.dark-mode,
 footer.dark-mode {
     background-color: #1e1e1e;
+    /* Slightly lighter dark background for header/footer */
 }
 
 /* Dark Mode Toggle Button */
@@ -41,60 +59,56 @@ footer.dark-mode {
 
 /* Hero Section */
 #hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* Full viewport height */
     text-align: center;
-    padding: 5rem 1rem;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
-    color: white;
+    color: inherit;
+    /* Ensure text adapts to mode */
 }
 
 #hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    animation: slideIn 1s ease-in-out;
 }
 
 #hero p {
-    animation: fadeIn 1.5s ease-in-out;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateY(-30px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+.cta-container {
+    display: flex;
+    gap: 1rem;
+    /* Space between buttons */
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-#hero .cta-button {
+.cta-button {
     display: inline-block;
     padding: 0.8rem 2rem;
-    background-color: #fff;
-    color: #0077b6;
+    background-color: #0077b6;
+    color: white;
     border: none;
     border-radius: 5px;
-    text-decoration: none;
     font-size: 1.2rem;
     font-weight: bold;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.3s, background-color 0.3s ease;
 }
 
-#hero .cta-button:hover {
+.cta-button.secondary {
+    background-color: #0077b6;
+    color: #fff;
+}
+
+.cta-button:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: #005f8a;
+    /* Darker blue */
 }
 
 /* Section Styling */
@@ -108,6 +122,15 @@ section {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
+    color: inherit;
+    /* Ensure sections adapt to light/dark mode */
+}
+
+body.dark-mode section {
+    background: #1e1e1e;
+    /* Dark mode background for sections */
+    color: #ffffff;
+    /* White text for dark mode */
 }
 
 section.visible {
@@ -115,143 +138,43 @@ section.visible {
     transform: translateY(0);
 }
 
-/* Icons in Section Titles */
-h2 i {
-    color: #0077b6;
-    margin-right: 10px;
-    transition: transform 0.3s ease;
-}
-
-h2 i:hover {
-    transform: rotate(360deg);
-}
-
-/* Navigation */
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: white;
+/* Navigation Bar */
+header nav {
+    display: flex;
+    /* Use Flexbox for alignment */
+    justify-content: center;
+    /* Center links horizontally */
+    align-items: center;
+    /* Center links vertically */
+    gap: 2rem;
+    /* Space between each link */
     padding: 1rem 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    background-color: transparent;
 }
 
-nav a {
-    margin: 0 15px;
+header nav a {
     text-decoration: none;
+    /* Remove underline */
     color: #0077b6;
-    font-weight: bold;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-/* Projects and Filters */
-#projects-container,
-.featured-projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
-
-.project,
-.featured-project {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.5rem;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background: #f9f9f9;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project:hover,
-.featured-project:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Filter Buttons */
-.filter-button {
-    padding: 0.5rem 1rem;
-    background: #0077b6;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.filter-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Skills Section */
-.progress-bar {
-    background: #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-    height: 25px;
-}
-
-.progress {
-    background: linear-gradient(to right, #0077b6, #00aaff);
-    height: 100%;
-    border-radius: 10px;
-    animation: loadProgress 2s ease-out;
-}
-
-@keyframes loadProgress {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 100%;
-    }
-}
-
-/* Contact Form */
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-form input,
-form textarea {
-    width: 80%;
-    margin: 0.5rem 0;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    /* Light blue for light mode */
     font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-form button {
-    padding: 0.8rem 2rem;
-    background: #0077b6;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: background 0.3s ease;
+body.dark-mode header nav a {
+    color: #ffffff;
+    /* White links for dark mode */
 }
 
-form button:hover {
-    background: #005f8a;
+header nav a:hover {
+    color: #005f8a;
+    /* Darker blue for light mode */
+}
+
+body.dark-mode header nav a:hover {
+    color: #aaaaaa;
+    /* Light gray for hover in dark mode */
 }
 
 /* Footer */
@@ -262,4 +185,181 @@ footer {
     color: #fff;
     margin-top: 2rem;
     font-size: 0.9rem;
+}
+
+body.dark-mode footer {
+    background: #1e1e1e;
+    /* Dark footer background */
+    color: #dcdcdc;
+    /* Light gray text for footer */
+}
+
+/* Skills Section */
+.progress-bar {
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 25px;
+}
+
+body.dark-mode .progress-bar {
+    background: #333;
+    /* Darker progress bar background for dark mode */
+}
+
+.progress {
+    background: linear-gradient(to right, #0077b6, #00aaff);
+    height: 100%;
+    border-radius: 10px;
+    animation: loadProgress 2s ease-out;
+}
+
+/* Contact Form */
+#contact-form input,
+#contact-form textarea,
+#contact-form button {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+body.dark-mode #contact-form input,
+body.dark-mode #contact-form textarea {
+    background: #1e1e1e;
+    color: #ffffff;
+    /* Ensure input text is visible in dark mode */
+    border: 1px solid #333;
+}
+
+#contact-form button {
+    background-color: #0077b6;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#contact-form button:hover {
+    background-color: #005f8a;
+}
+
+/* My Projects Section */
+#projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center items horizontally */
+    justify-content: center;
+    /* Center items vertically */
+    padding: 4rem 2rem;
+    /* Increase padding for spacing */
+    margin: 0 auto;
+    max-width: 1200px;
+    /* Limit section width */
+    text-align: center;
+    /* Center text */
+}
+
+#projects h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: inherit;
+    text-align: center;
+}
+
+/* Grid Layout for Projects */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Responsive grid */
+    gap: 2rem;
+    /* Space between grid items */
+    width: 100%;
+    /* Ensure grid takes full width */
+    max-width: 1000px;
+    /* Restrict grid width */
+    margin: 0 auto;
+    /* Center the grid within the container */
+    justify-content: center;
+    /* Center items horizontally */
+    align-items: start;
+    /* Align items at the top */
+}
+
+/* Individual Project Cards */
+.project-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center content horizontally */
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    /* Ensure card text is centered */
+}
+
+body.dark-mode .project-card {
+    background: #1e1e1e;
+    /* Dark background for cards in dark mode */
+    color: #ffffff;
+    /* White text in dark mode */
+}
+
+.project-card img {
+    width: 100%;
+    /* Make images responsive */
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.project-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: inherit;
+}
+
+.project-card p {
+    font-size: 1rem;
+    color: inherit;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    /* Lift on hover */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    /* Stronger shadow */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #hero {
+        padding: 3rem 1rem;
+    }
+
+    #hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .cta-container {
+        flex-direction: column;
+    }
+
+    .cta-button {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        /* Stack cards in one column for small screens */
+    }
 }

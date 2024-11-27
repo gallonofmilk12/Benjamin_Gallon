@@ -9,16 +9,25 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   </head>
   <body>
+    <!-- Particle Background -->
+    <div id="particle-background"></div>
+
     <!-- Dark Mode Toggle -->
     <button id="dark-mode-toggle">Toggle Dark Mode</button>
 
     <!-- Hero Section -->
     <section id="hero">
-      <h1>Hi, I'm Benjamin Gallon</h1>
+      <h1>Hi, I'm a History Enthusiast</h1>
       <p>History Major | Aspiring Web Developer | Storyteller</p>
-      <a href="#projects" class="cta-button">View My Projects</a>
+      <div class="cta-container">
+        <a href="#projects" class="cta-button">View My Projects</a>
+        <a href="resume.pdf" download class="cta-button secondary"
+          >Download Resume</a
+        >
+      </div>
     </section>
 
     <!-- Sticky Navigation -->
@@ -35,7 +44,7 @@
 
     <!-- About Section -->
     <section id="about">
-      <h2><i class="fas fa-user"></i> About Me</h2>
+      <h2>About Me</h2>
       <p>
         Welcome! I'm Benjamin Gallon, a history major exploring the world of
         coding. I specialize in Python, TradingView scripts, and Web3
@@ -46,23 +55,14 @@
 
     <!-- Projects Section -->
     <section id="projects">
-      <h2><i class="fas fa-code"></i> My Projects</h2>
-      <div id="project-filters">
-        <button class="filter-button active" data-category="all">All</button>
-        <button class="filter-button" data-category="web">
-          Web Development
-        </button>
-        <button class="filter-button" data-category="python">Python</button>
-      </div>
-      <div id="projects-container"></div>
-    </section>
-
-    <!-- Featured Projects Section -->
-    <section id="featured-projects">
-      <h2><i class="fas fa-star"></i> Featured Projects</h2>
-      <div class="featured-projects-grid">
-        <div class="featured-project">
-          <img src="crypto-tracker-image.jpg" alt="Crypto Tracker" />
+      <h2>My Projects</h2>
+      <div id="projects-container">
+        <div class="project">
+          <img
+            src="images/project1-thumbnail.png"
+            alt="Crypto Tracker Thumbnail"
+            loading="lazy"
+          />
           <h3>Crypto Finance Tracker App</h3>
           <p>
             A Web3-integrated app to track cryptocurrencies and implement
@@ -72,8 +72,12 @@
             >View on GitHub</a
           >
         </div>
-        <div class="featured-project">
-          <img src="stock-screener-image.jpg" alt="Stock Screener" />
+        <div class="project">
+          <img
+            src="images/project2-thumbnail.png"
+            alt="Stock Screener Thumbnail"
+            loading="lazy"
+          />
           <h3>Stock Screener</h3>
           <p>
             Python-based tool for identifying small-cap biotech stocks and
@@ -86,9 +90,31 @@
       </div>
     </section>
 
+    <!-- Featured Projects Section -->
+    <section id="featured-projects">
+      <h2>Featured Projects</h2>
+      <div class="featured-projects-grid">
+        <div class="featured-project">
+          <img
+            src="images/project1-thumbnail.png"
+            alt="Crypto Tracker"
+            loading="lazy"
+          />
+          <h3>Crypto Finance Tracker App</h3>
+          <p>
+            A Web3-integrated app to track cryptocurrencies and implement
+            AI-driven trading strategies.
+          </p>
+          <a href="https://github.com/yourgithub/crypto-tracker" target="_blank"
+            >View on GitHub</a
+          >
+        </div>
+      </div>
+    </section>
+
     <!-- Skills Section -->
     <section id="skills">
-      <h2><i class="fas fa-tools"></i> Skills</h2>
+      <h2>Skills</h2>
       <div class="skill">
         <label>Python</label>
         <div class="progress-bar">
@@ -101,17 +127,11 @@
           <div class="progress" style="width: 70%"></div>
         </div>
       </div>
-      <div class="skill">
-        <label>TradingView Scripts</label>
-        <div class="progress-bar">
-          <div class="progress" style="width: 75%"></div>
-        </div>
-      </div>
     </section>
 
     <!-- Resume Section -->
     <section id="resume">
-      <h2><i class="fas fa-file-alt"></i> My Resume</h2>
+      <h2>My Resume</h2>
       <a href="Benjamin-Gallon-Resume.pdf" download class="resume-button"
         >Download Resume</a
       >
@@ -119,7 +139,7 @@
 
     <!-- Contact Section -->
     <section id="contact">
-      <h2><i class="fas fa-envelope"></i> Contact Me</h2>
+      <h2>Contact Me</h2>
       <form id="contact-form">
         <input type="text" name="user_name" placeholder="Your Name" required />
         <input
@@ -138,7 +158,7 @@
       <p>&copy; 2024 Benjamin Gallon. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript File -->
+    <!-- JavaScript -->
     <script src="app.js"></script>
   </body>
 </html>

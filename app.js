@@ -1,3 +1,120 @@
+// Typing Animation for Hero Section
+const heroTitle = document.querySelector("#hero h1");
+const words = ["Benjamin Gallon", "a History Enthusiast", "a Web Developer"];
+let wordIndex = 0;
+let letterIndex = 0;
+
+function type() {
+  if (letterIndex < words[wordIndex].length) {
+    heroTitle.textContent += words[wordIndex].charAt(letterIndex);
+    letterIndex++;
+    setTimeout(type, 150); // Typing speed
+  } else {
+    setTimeout(() => {
+      erase();
+    }, 2000); // Pause before erasing
+  }
+}
+
+function erase() {
+  if (letterIndex > 0) {
+    heroTitle.textContent = heroTitle.textContent.slice(0, -1);
+    letterIndex--;
+    setTimeout(erase, 100); // Erasing speed
+  } else {
+    wordIndex = (wordIndex + 1) % words.length;
+    setTimeout(type, 500); // Pause before typing next word
+  }
+}
+
+document.addEventListener("DOMContentLoaded", type);
+
+// Dark Mode Toggle
+const darkModeToggle = document.getElementById("dark-mode-toggle");
+let isDarkMode = false;
+
+darkModeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  document.querySelector("header").classList.toggle("dark-mode");
+  document.querySelector("footer").classList.toggle("dark-mode");
+  isDarkMode = !isDarkMode;
+
+  // Clear existing particles and reload with new settings
+  particlesJS.destroy(); // Destroy existing particles
+  setTimeout(() => {
+    loadParticles(isDarkMode); // Reload particles with updated settings
+  }, 100); // 100ms delay
+});
+
+// Function to load particles with color based on the mode
+function loadParticles(darkMode) {
+  const particleColor = darkMode ? "#ffffff" : "#0077b6"; // White for dark mode, blue for light mode
+  particlesJS("particle-background", {
+    particles: {
+      number: {
+        value: 80, // Number of particles
+        density: {
+          enable: true,
+          value_area: 800, // Adjust the particle density area
+        },
+      },
+      color: {
+        value: particleColor, // Particle color based on mode
+      },
+      shape: {
+        type: "circle",
+      },
+      opacity: {
+        value: 0.5,
+      },
+      size: {
+        value: 3,
+        random: true,
+      },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: particleColor,
+        opacity: 0.4,
+      },
+      move: {
+        enable: true,
+        speed: 6,
+        direction: "none",
+      },
+    },
+    interactivity: {
+      detect_on: "canvas", // Ensures interactions work on the particle canvas
+      events: {
+        onhover: {
+          enable: true,
+          mode: "grab",
+        },
+        onclick: {
+          enable: true,
+          mode: "push",
+        },
+        resize: true, // Makes particles responsive
+      },
+    },
+    retina_detect: true, // Optimizes for high-resolution screens
+  });
+}
+
+// Initial load of particles
+loadParticles(isDarkMode);
+
+// Parallax Effect for Hero Section
+document.addEventListener("scroll", () => {
+  const parallaxBg = document.querySelector(".parallax-bg");
+  const scrollPosition = window.scrollY;
+
+  if (parallaxBg) {
+    // Adjust this value to control the scroll speed (0.5 means slower movement)
+    parallaxBg.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+  }
+});
+
 // Animate Sections on Scroll
 const sections = document.querySelectorAll("section");
 const observer = new IntersectionObserver(
@@ -12,61 +129,3 @@ const observer = new IntersectionObserver(
 );
 
 sections.forEach((section) => observer.observe(section));
-
-// Populate Projects
-const projects = [
-  {
-    name: "Crypto Finance Tracker App",
-    category: "web",
-    description:
-      "A Web3-integrated app to track cryptocurrencies and implement AI-driven trading strategies.",
-    link: "https://github.com/yourgithub/crypto-tracker",
-  },
-  {
-    name: "Stock Screener",
-    category: "python",
-    description:
-      "Python-based tool for identifying small-cap biotech stocks and undervalued companies.",
-    link: "https://github.com/yourgithub/stock-screener",
-  },
-];
-
-const projectsContainer = document.getElementById("projects-container");
-projects.forEach((project) => {
-  const projectDiv = document.createElement("div");
-  projectDiv.classList.add("project");
-  projectDiv.setAttribute("data-category", project.category);
-  projectDiv.innerHTML = `
-    <h3>${project.name}</h3>
-    <p>${project.description}</p>
-    <a href="${project.link}" target="_blank">View on GitHub</a>
-  `;
-  projectsContainer.appendChild(projectDiv);
-});
-
-// Filter Projects
-document.querySelectorAll(".filter-button").forEach((button) => {
-  button.addEventListener("click", () => {
-    document
-      .querySelectorAll(".filter-button")
-      .forEach((btn) => btn.classList.remove("active"));
-    button.classList.add("active");
-
-    const category = button.dataset.category;
-    document.querySelectorAll(".project").forEach((project) => {
-      if (category === "all" || project.dataset.category === category) {
-        project.style.display = "block";
-      } else {
-        project.style.display = "none";
-      }
-    });
-  });
-});
-
-// Dark Mode Toggle
-const darkModeToggle = document.getElementById("dark-mode-toggle");
-darkModeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-  document.querySelector("header").classList.toggle("dark-mode");
-  document.querySelector("footer").classList.toggle("dark-mode");
-});
