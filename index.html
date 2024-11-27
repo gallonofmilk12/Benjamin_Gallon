@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benjamin Gallon's Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Dark Mode Toggle -->
+    <button id="dark-mode-toggle">Toggle Dark Mode</button>
+
+    <!-- Hero Section -->
+    <section id="hero">
+      <h1>Hi, I'm Benjamin Gallon</h1>
+      <p>History Major | Aspiring Web Developer | Storyteller</p>
+      <a href="#projects" class="cta-button">View My Projects</a>
+    </section>
+
+    <!-- Sticky Navigation -->
+    <header>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#featured-projects">Featured</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2><i class="fas fa-user"></i> About Me</h2>
+      <p>
+        Welcome! I'm Benjamin Gallon, a history major exploring the world of
+        coding. I specialize in Python, TradingView scripts, and Web3
+        development. This is my journey of building apps, learning new concepts,
+        and showcasing projects. Let’s connect!
+      </p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2><i class="fas fa-code"></i> My Projects</h2>
+      <div id="project-filters">
+        <button class="filter-button active" data-category="all">All</button>
+        <button class="filter-button" data-category="web">
+          Web Development
+        </button>
+        <button class="filter-button" data-category="python">Python</button>
+      </div>
+      <div id="projects-container"></div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="featured-projects">
+      <h2><i class="fas fa-star"></i> Featured Projects</h2>
+      <div class="featured-projects-grid">
+        <div class="featured-project">
+          <img src="crypto-tracker-image.jpg" alt="Crypto Tracker" />
+          <h3>Crypto Finance Tracker App</h3>
+          <p>
+            A Web3-integrated app to track cryptocurrencies and implement
+            AI-driven trading strategies.
+          </p>
+          <a href="https://github.com/yourgithub/crypto-tracker" target="_blank"
+            >View on GitHub</a
+          >
+        </div>
+        <div class="featured-project">
+          <img src="stock-screener-image.jpg" alt="Stock Screener" />
+          <h3>Stock Screener</h3>
+          <p>
+            Python-based tool for identifying small-cap biotech stocks and
+            undervalued companies.
+          </p>
+          <a href="https://github.com/yourgithub/stock-screener" target="_blank"
+            >View on GitHub</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2><i class="fas fa-tools"></i> Skills</h2>
+      <div class="skill">
+        <label>Python</label>
+        <div class="progress-bar">
+          <div class="progress" style="width: 85%"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <label>Web Development</label>
+        <div class="progress-bar">
+          <div class="progress" style="width: 70%"></div>
+        </div>
+      </div>
+      <div class="skill">
+        <label>TradingView Scripts</label>
+        <div class="progress-bar">
+          <div class="progress" style="width: 75%"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume">
+      <h2><i class="fas fa-file-alt"></i> My Resume</h2>
+      <a href="Benjamin-Gallon-Resume.pdf" download class="resume-button"
+        >Download Resume</a
+      >
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2><i class="fas fa-envelope"></i> Contact Me</h2>
+      <form id="contact-form">
+        <input type="text" name="user_name" placeholder="Your Name" required />
+        <input
+          type="email"
+          name="user_email"
+          placeholder="Your Email"
+          required
+        />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Benjamin Gallon. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript File -->
+    <script src="app.js"></script>
+  </body>
+</html>
