@@ -86,6 +86,7 @@ footer.dark-mode {
     /* Space between buttons */
 }
 
+/* General Styles for CTA Buttons */
 .cta-button {
     display: inline-block;
     padding: 0.8rem 2rem;
@@ -110,6 +111,22 @@ footer.dark-mode {
     background-color: #005f8a;
     /* Darker blue */
 }
+
+/* Highlighted CTA for "Hire Me" */
+.cta-button.highlight {
+    background-color: #28a745;
+    /* Green for emphasis */
+    color: white;
+    border: none;
+}
+
+.cta-button.highlight:hover {
+    background-color: #218838;
+    /* Darker green on hover */
+    transform: scale(1.1);
+    /* Lift effect */
+}
+
 
 /* Section Styling */
 section {

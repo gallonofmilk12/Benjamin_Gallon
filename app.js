@@ -5,6 +5,11 @@ let wordIndex = 0;
 let letterIndex = 0;
 
 function type() {
+  // Clear previous content before typing the next word
+  if (letterIndex === 0) {
+    heroTitle.textContent = ""; // Ensure the content is cleared before typing
+  }
+
   if (letterIndex < words[wordIndex].length) {
     heroTitle.textContent += words[wordIndex].charAt(letterIndex);
     letterIndex++;
@@ -129,3 +134,21 @@ const observer = new IntersectionObserver(
 );
 
 sections.forEach((section) => observer.observe(section));
+
+// Smooth Scroll for "Hire Me" Button
+const hireMeButton = document.querySelector(".cta-button.highlight"); // Select the Hire Me button
+
+if (hireMeButton) {
+  hireMeButton.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent default anchor behavior
+
+    const contactSection = document.querySelector("#contact"); // Target the Contact section
+    if (contactSection) {
+      // Smooth scroll to Contact section
+      contactSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  });
+}
