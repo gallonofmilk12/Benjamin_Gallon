@@ -10,25 +10,39 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Include Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   </head>
   <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <h1>Loading Benjamin Gallon's Portfolio...</h1>
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+
     <!-- Particle Background -->
     <div id="particle-background"></div>
 
     <!-- Dark Mode Toggle -->
-    <button id="dark-mode-toggle">Toggle Dark Mode</button>
+    <button id="dark-mode-toggle">
+      <img src="images/sun-moon-icon.png" alt="Toggle Dark Mode" />
+    </button>
 
     <!-- Hero Section -->
-    <section id="hero">
-      <h1>Hi, I'm a History Enthusiast</h1>
-      <p>History Major | Aspiring Web Developer | Storyteller</p>
+    <section id="hero" class="fade-in">
+      <div class="parallax-bg"></div>
+      <h1>Hi, I'm Benjamin Gallon.</h1>
+      <p class="tagline">
+        <span id="typed-text"></span>
+      </p>
       <div class="cta-container">
-        <a href="#projects" class="cta-button">View My Projects</a>
-        <a href="resume.pdf" download class="cta-button secondary"
-          >Download Resume</a
-        >
         <a href="#contact" class="cta-button highlight">Hire Me</a>
+        <a href="#projects" class="cta-button">View My Projects</a>
+        <a href="resume.pdf" download class="cta-button secondary">Download Resume</a>
       </div>
+      <div class="scroll-indicator"></div>
     </section>
 
     <!-- Sticky Navigation -->
@@ -37,105 +51,143 @@
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
-        <a href="#featured-projects">Featured</a>
         <a href="#resume">Resume</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <!-- About Section -->
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        Welcome! I'm Benjamin Gallon, a history major exploring the world of
-        coding. I specialize in Python, TradingView scripts, and Web3
-        development. This is my journey of building apps, learning new concepts,
-        and showcasing projects. Let’s connect!
-      </p>
+    <section id="about" class="fade-in">
+      <div class="about-card">
+        <img src="images/profile.jpg" alt="Profile Picture" class="profile-picture">
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p>
+            Welcome! I'm Benjamin Gallon, a history major exploring the world of coding. I specialize in 
+            <strong>Python</strong>, <strong>TradingView scripts</strong>, and <strong>Web3 development</strong>. 
+            This is my journey of building apps, learning new concepts, and showcasing projects. 
+            <br><br>
+            I am motivated by the endless possibilities that technology offers to solve real-world problems and improve lives. 
+            My goal is to create impactful and innovative solutions through code.
+            <br><br>
+            Feel free to check out my projects below or connect with me directly for collaboration opportunities!
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects">
+    <section id="projects" class="fade-in">
       <h2>My Projects</h2>
-      <div id="projects-container">
-        <div class="project">
+      <div id="projects-container" class="projects-grid">
+        <div class="project-card slide-in-left">
           <img
-            src="images/project1-thumbnail.png"
+            src="images/project1-highres.png"
             alt="Crypto Tracker Thumbnail"
             loading="lazy"
           />
           <h3>Crypto Finance Tracker App</h3>
           <p>
             A Web3-integrated app to track cryptocurrencies and implement
-            AI-driven trading strategies.
+            AI-driven trading strategies. Increased trading efficiency by 30%.
           </p>
-          <a href="https://github.com/yourgithub/crypto-tracker" target="_blank"
-            >View on GitHub</a
-          >
+          <button class="cta-button cta-primary" onclick="document.getElementById('project1-modal').style.display='block'">
+            Learn More
+          </button>
         </div>
-        <div class="project">
+        <div class="project-card slide-in-right">
           <img
-            src="images/project2-thumbnail.png"
+            src="images/project2-highres.png"
             alt="Stock Screener Thumbnail"
             loading="lazy"
           />
           <h3>Stock Screener</h3>
           <p>
             Python-based tool for identifying small-cap biotech stocks and
-            undervalued companies.
+            undervalued companies, saving users an average of 5 hours per week.
           </p>
-          <a href="https://github.com/yourgithub/stock-screener" target="_blank"
-            >View on GitHub</a
-          >
+          <a href="https://github.com/yourgithub/stock-screener" target="_blank" class="cta-button cta-secondary">
+            View on GitHub
+          </a>
         </div>
-      </div>
-    </section>
-
-    <!-- Featured Projects Section -->
-    <section id="featured-projects">
-      <h2>Featured Projects</h2>
-      <div class="featured-projects-grid">
-        <div class="featured-project">
+        <div class="project-card slide-in-left">
           <img
-            src="images/project1-thumbnail.png"
+            src="images/project3-highres.png"
             alt="Crypto Tracker"
             loading="lazy"
           />
           <h3>Crypto Finance Tracker App</h3>
           <p>
             A Web3-integrated app to track cryptocurrencies and implement
-            AI-driven trading strategies.
+            AI-driven trading strategies. Used by over 100 users.
           </p>
-          <a href="https://github.com/yourgithub/crypto-tracker" target="_blank"
-            >View on GitHub</a
-          >
+          <a href="https://github.com/yourgithub/crypto-tracker" target="_blank" class="cta-button cta-secondary">
+            View on GitHub
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="skill">
-        <label>Python</label>
-        <div class="progress-bar">
-          <div class="progress" style="width: 85%"></div>
-        </div>
+    <!-- Modal Template -->
+    <div id="project1-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Project Title Placeholder</h2>
+        <img src="images/project1-placeholder.png" alt="Project Thumbnail" />
+        <p>
+          <strong>Problem:</strong> Placeholder text for the problem statement.  
+          <strong>Solution:</strong> Placeholder text for your approach and technologies used.  
+          <strong>Impact:</strong> Placeholder text for the result or measurable impact.
+        </p>
+        <a href="https://github.com/yourgithub/project1" target="_blank" class="cta-button">View on GitHub</a>
+        <a href="#" class="cta-button secondary">Try Demo</a>
       </div>
-      <div class="skill">
-        <label>Web Development</label>
-        <div class="progress-bar">
-          <div class="progress" style="width: 70%"></div>
+    </div>
+
+    <!-- Skills Section -->
+    <section id="skills" class="fade-in skills-section">
+      <h2>Skills</h2>
+      <div id="skill-globe-container"></div> <!-- Added container for 3D Globe -->
+      <div class="skills-container">
+        <div class="skill-ring" data-skill="85">
+          <div class="inner-circle">
+            <span>Python</span>
+            <span class="percentage">85%</span>
+            <div class="tooltip">Proficient in Python with 3+ years of experience in scripting, automation, and data analysis.</div>
+          </div>
         </div>
+        <div class="skill-ring" data-skill="70">
+          <div class="inner-circle">
+            <span>Web Development</span>
+            <span class="percentage">70%</span>
+            <div class="tooltip">Experienced in building responsive and dynamic websites using modern frameworks and technologies.</div>
+          </div>
+        </div>
+        <div class="skill-ring" data-skill="60">
+          <div class="inner-circle">
+            <span>AI/ML</span>
+            <span class="percentage">60%</span>
+            <div class="tooltip">Skilled in developing machine learning models and integrating AI solutions into applications.</div>
+          </div>
+        </div>
+        <!-- Add more skill rings as needed -->
       </div>
     </section>
+
+    <!-- Skill Details Modal -->
+    <div id="skill-details-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2 id="modal-skill-title">Skill Title</h2>
+        <p id="modal-skill-description">Skill Description</p>
+      </div>
+    </div>
 
     <!-- Resume Section -->
     <section id="resume">
       <h2>My Resume</h2>
-      <a href="Benjamin-Gallon-Resume.pdf" download class="resume-button"
-        >Download Resume</a
-      >
+      <p>Explore my work history and technical skills in greater detail by downloading my resume.</p>
+      <a href="Benjamin-Gallon-Resume.pdf" class="cta-button" download>Download Resume</a>
     </section>
 
     <!-- Contact Section -->
